@@ -6,7 +6,6 @@ import functions_api as fa
 app = FastAPI()
 
 # ENDPOINTS
-@app.get("/")
 
 #1 developer
 @app.get(path= "/developer")
