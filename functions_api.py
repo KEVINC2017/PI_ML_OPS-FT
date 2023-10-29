@@ -2,11 +2,11 @@ import pandas as pd
 
 #Datos a utilizar (parquet)
 
-df_developer = pd.read_parquet(r"Datasets\developer")
-df_best_developer_year = pd.read_parquet(r"Datasets\best_developer_year")
-df_developer_reviews_analysis = pd.read_parquet(r"Datasets\developer_reviews_analysis")
-df_user_data = pd.read_parquet(r"Datasets\user_data")
-df_user_for_genre = pd.read_parquet(r"Datasets\user_for_genre")
+df_developer = pd.read_parquet("Datasets/developer")
+df_best_developer_year = pd.read_parquet("Datasets/best_developer_year")
+df_developer_reviews_analysis = pd.read_parquet("Datasets/developer_reviews_analysis")
+df_user_data = pd.read_parquet("Datasets/user_data")
+df_user_for_genre = pd.read_parquet("Datasets/user_for_genre")
 
 def developer(desarrolladora):
     # Filtra el DataFrame para obtener las filas correspondientes a la developer
