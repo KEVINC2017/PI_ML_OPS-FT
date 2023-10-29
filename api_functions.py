@@ -68,7 +68,7 @@ def userdata(user_id):
     porcentaje_recomendacion = user_data['percentage_recommend'].values[0]
     cantidad_items = user_data['count_items'].values[0]
 
-    return {"Usuario": user_id}
+    return {"Usuario": user_id, "Dinero gastado": str(dinero_gastado)+" USD"}
     #return {"Usuario": user_id, "Dinero gastado": str(dinero_gastado)+" USD", "% de recomendación": str(porcentaje_recomendacion) + " %","cantidad de items": cantidad_items}
 
 def UserForGenre(genre):
