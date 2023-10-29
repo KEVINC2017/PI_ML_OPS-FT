@@ -1,0 +1,60 @@
+# Importaciones
+from fastapi import FastAPI, Query
+import functions_api as fa
+
+# Se instancia la aplicacion
+app = FastAPI()
+
+# ENDPOINTS
+@app.get("/")
+
+#1 developer
+@app.get(path= "/developer")
+async def developer(desarrolladora: str = Query (...,
+                                            description='Desarrollador de videojuegos',
+                                            example='Valve')):
+    '''Muestra la cantidad de ítems y el porcentaje de contenido Free por año,
+    según empresa desarrolladora
+    '''
+    return fa.developer(desarrolladora)
+
+#2 userdata
+@app.get(path= "/userdata")
+async def userdata(user_id: str = Query (...,
+                                            description='Identificador único del usuario',
+                                            example='76561198070565427')):
+    '''Muestra la cantidad de dinero gastado por el usuario, el porcentaje
+    de recomendación y la cantidad de items
+    '''
+    return fa.userdata(user_id)
+
+#3 userforgenre
+@app.get(path= "/UserForGenre")
+async def UserForGenre(genre: str = Query (...,
+                                            description='Género del videojuego',
+                                            example='Action')):
+    '''Muestra el usuario que acumula más horas jugadas para el género dado y
+    una lista de la acumulación de horas jugadas por año de lanzamiento
+    '''
+    return fa.UserForGenre(genre)
+
+#4 bestdeveloperyear
+@app.get(path= "/best_developer_year")
+async def best_developer_year(year: int = Query (...,
+                                            description='Año para filtrar a los mejores desarrolladores',
+                                            example='2015')):
+    '''Muestra el top 3 de desarrolladores con juegos más recomendados por 
+    usuarios para el año dado
+    '''
+    return fa.best_developer_year(year)
+
+#5 developer_reviews_analysis
+@app.get(path= "/developer_reviews_analysis")
+async def developer_reviews_analysis(developer: str = Query (...,
+                                            description='Desarrollador de videojuegos',
+                                            example='Valve')):
+    '''Muestra un diccionario con el nombre del desarrollador y una lista
+    con la cantidad total de registros de reviews categorizadas por un 
+    análisis de sentimiento
+    '''
+    return fa.developer_reviews_analysis(developer)
