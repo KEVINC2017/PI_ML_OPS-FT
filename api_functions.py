@@ -42,7 +42,7 @@ def presentation():
 
 def developer(desarrolladora):
     # Filtra el DataFrame para obtener las filas correspondientes a la developer
-    developer_data = df_developer[df_developer['developer'] == developer]
+    developer_data = df_developer[df_developer['developer'] == desarrolladora]
 
     if developer_data.empty:
         return None
@@ -54,6 +54,7 @@ def developer(desarrolladora):
         contenido_free = round(grupo['free_content'].sum(),2)
 
         developer_year.append({"Año": año, "Cantidad de Items": str(cantidad_items),"Contenido Free": str(contenido_free) + " %"})
+
     return {'Desarrollador '+ desarrolladora : developer_year}
 
 def userdata(user_id):
