@@ -1,6 +1,6 @@
 # Importaciones
 from fastapi import FastAPI, Query
-import functions_api as fa
+import api_functions as fa
 
 # Se instancia la aplicacion
 app = FastAPI()
