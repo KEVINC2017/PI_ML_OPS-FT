@@ -53,7 +53,7 @@ def developer(desarrolladora):
         cantidad_items = grupo['items_count'].sum()
         contenido_free = round(grupo['free_content'].sum(),2)
 
-        developer_year.append({"Año": año, "Cantidad de Items": cantidad_items,"Contenido Free": str(contenido_free) + " %"})
+        developer_year.append({"Año": año, "Cantidad de Items": str(cantidad_items),"Contenido Free": str(contenido_free) + " %"})
     return {'Desarrollador '+ desarrolladora : developer_year}
 
 def userdata(user_id):
