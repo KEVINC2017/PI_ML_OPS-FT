@@ -8,7 +8,7 @@ app = FastAPI()
 # ENDPOINTS
 
 #1 developer
-@app.get(path= "/developer")
+@app.get("/developer/{desarrolladora:path}")
 async def developer(desarrolladora: str = Query (...,
                                             description='Desarrollador de videojuegos',
                                             example='Valve')):
@@ -18,7 +18,7 @@ async def developer(desarrolladora: str = Query (...,
     return fa.developer(desarrolladora)
 
 #2 userdata
-@app.get(path= "/userdata")
+@app.get("/userdata/{user_id:path}")
 async def userdata(user_id: str = Query (...,
                                             description='Identificador único del usuario',
                                             example='76561198070565427')):
@@ -28,7 +28,7 @@ async def userdata(user_id: str = Query (...,
     return fa.userdata(user_id)
 
 #3 userforgenre
-@app.get(path= "/UserForGenre")
+@app.get("/UserForGenre/{genre:path}")
 async def UserForGenre(genre: str = Query (...,
                                             description='Género del videojuego',
                                             example='Action')):
@@ -38,7 +38,7 @@ async def UserForGenre(genre: str = Query (...,
     return fa.UserForGenre(genre)
 
 #4 bestdeveloperyear
-@app.get(path= "/best_developer_year")
+@app.get("/best_developer_year/{year:path}")
 async def best_developer_year(year: int = Query (...,
                                             description='Año para filtrar a los mejores desarrolladores',
                                             example='2015')):
@@ -48,7 +48,7 @@ async def best_developer_year(year: int = Query (...,
     return fa.best_developer_year(year)
 
 #5 developer_reviews_analysis
-@app.get(path= "/developer_reviews_analysis")
+@app.get("/developer_reviews_analysis/{developer:path}")
 async def developer_reviews_analysis(developer: str = Query (...,
                                             description='Desarrollador de videojuegos',
                                             example='Valve')):
