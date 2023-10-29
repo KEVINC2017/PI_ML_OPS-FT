@@ -1,4 +1,6 @@
 import pandas as pd
+from fastapi import HTTPException
+from fastapi.responses import HTMLResponse
 
 #Datos a utilizar (parquet)
 
@@ -7,6 +9,36 @@ df_best_developer_year = pd.read_parquet("Datasets/best_developer_year")
 df_developer_reviews_analysis = pd.read_parquet("Datasets/developer_reviews_analysis")
 df_user_data = pd.read_parquet("Datasets/user_data")
 df_user_for_genre = pd.read_parquet("Datasets/user_for_genre")
+
+def presentation():
+
+    try:
+        html_content = """
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Información General de la API</title>
+            </head>
+            <body>
+                <h1>API Creada por Kevin Ronald Coaguila Torres</h1>
+                <hr> <!-- Línea horizontal -->
+                <h2>MLOPs - STEAM</h2>
+                <hr> <!-- Línea horizontal -->
+                <h2>Endpoints:</h2>
+                <ol>
+                    <li><code><strong style="color: #ff5733">/developer/</strong> (desarrolladora: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra la cantidad de ítems y el porcentaje de contenido Free por año, según empresa desarrolladora.</li>
+                    <li><code><strong style="color: #ff5733">/userdata/</strong> (user_id: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra la cantidad de dinero gastado por el usuario, el porcentaje de recomendación y la cantidad de items.</li>
+                    <li><code><strong style="color: #ff5733">/UserForGenre/</strong> (genre: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra el usuario que acumula más horas jugadas para el género dado una lista de la acumulación de horas jugadas por año de lanzamiento.</li>
+                    <li><code><strong style="color: #ff5733">/best_developer_year/</strong> (year: int)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra el top 3 de desarrolladores con juegos más recomendados por usuarios para el año dado.</li>
+                    <li><code><strong style="color: #ff5733">/developer_reviews_analysis/</strong> (developer: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra un diccionario con el nombre del desarrollador y una lista con la cantidad total de registros de reviews categorizadas por un análisis de sentimiento.</li>
+                </ol>
+            </body>
+            </html>
+        """
+        return HTMLResponse(content=html_content)
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error en getIndex: {str(e)}")
 
 def developer(desarrolladora):
     # Filtra el DataFrame para obtener las filas correspondientes a la developer
