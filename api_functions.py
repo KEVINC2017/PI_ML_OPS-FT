@@ -1,4 +1,5 @@
 import pandas as pd
+import operator
 from fastapi import HTTPException
 from fastapi.responses import HTMLResponse
 
@@ -9,6 +10,9 @@ df_best_developer_year = pd.read_parquet("Datasets/best_developer_year")
 df_developer_reviews_analysis = pd.read_parquet("Datasets/developer_reviews_analysis")
 df_user_data = pd.read_parquet("Datasets/user_data")
 df_user_for_genre = pd.read_parquet("Datasets/user_for_genre")
+df_recomendacion_juego = pd.read_parquet(r"Datasets\recomendacion_juego")
+df_recomendacion_usuario = pd.read_parquet(r"Datasets\recomendacion_usuario")
+pivot_norm = pd.read_parquet(r"Datasets\pivot_norm")
 
 def presentation():
 
@@ -112,4 +116,53 @@ def developer_reviews_analysis(developer):
     total_negative = int(developer_data['Negative'].sum())
 
     return {developer: ['Negative = '+ str(total_negative), 'Positive = '+ str(total_positive)]}
+
+def recomendacion_juego(item_id):
+    # Filtra el df para obtener las filas segun el desarrollador
+    recomendacion_item = df_recomendacion_juego[df_recomendacion_juego['item_id'] == item_id]
+
+    if recomendacion_item.empty:
+        return None
+
+    # Se extrae los nombres de los desarrolladores en el top 3 para ese año
+    r_1 = recomendacion_item['Recommend_1'].values[0]
+    r_2 = recomendacion_item['Recommend_2'].values[0]
+    r_3 = recomendacion_item['Recommend_3'].values[0]
+    r_4 = recomendacion_item['Recommend_4'].values[0]
+    r_5 = recomendacion_item['Recommend_5'].values[0]
+
+    recomends = [{'Recomendacion 1': r_1}, {'Recomendacion 2': r_2}, {'Recomendacion 3': r_3}, {'Recomendacion 4': r_4}, {'Recomendacion 5': r_5}]
+
+    return {'Juegos similares a ' + str(item_id): recomends}
+
+def recomendacion_usuario(user_id):
+
+    # Se comprueba si existe el usuario
+    if user_id not in pivot_norm.columns:
+        return('Sin datos para el usuario: {}'.format(user_id))
+    
+    #Se obtiene los usuarios mas parecidos
+    users = df_recomendacion_usuario.sort_values(by=user_id, ascending=False).index[1:11]
+    
+    mejores_coincidencias = []
+    comunes = {}
+    
+    #Para cada usuario similar, encuentra el juego mejor calificado y lo agrega a la lista 'mejores_coincidencias'
+    for i in users:
+        max_score = pivot_norm.loc[:, i].max()
+        mejores_coincidencias.append(pivot_norm[pivot_norm.loc[:, i]==max_score].index.tolist())
+    
+    #Se cuenta las recomendaciones
+    for i in range(len(mejores_coincidencias)):
+        for j in mejores_coincidencias[i]:
+            if j in comunes:
+                comunes[j] += 1
+            else:
+                comunes[j] = 1
+    
+    #Se ordena los juegos por la frecuencia de recomendacion
+    sorted_list = sorted(comunes.items(), key=operator.itemgetter(1), reverse=True)
+    
+    # Devuelve los 5 juegos más recomendados
+    return {'Juegos que le pueden interesar a ' + str(user_id): sorted_list[:5]}
 

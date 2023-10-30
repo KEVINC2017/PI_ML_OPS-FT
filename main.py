@@ -64,3 +64,21 @@ async def developer_reviews_analysis(developer: str = Query (...,
     análisis de sentimiento
     '''
     return fa.developer_reviews_analysis(developer)
+
+#6 recomendacion_juego
+@app.get(path= "/recomendacion_juego")
+async def recomendacion_juego(item_id: str = Query (...,
+                                            description='Identificador único de juego',
+                                            example='50')):
+    '''Muestra una lista con 5 juegos recomendados similares al ingresado
+    '''
+    return fa.recomendacion_juego(item_id)
+
+#7 recomendacion_usuario
+@app.get(path= "/recomendacion_usuario")
+async def recomendacion_usuario(user_id: str = Query (...,
+                                            description='Identificador único del usuario',
+                                            example='-2SV-vuLB-Kg')):
+    '''Muestra una lista con 5 juegos recomendados para el usuario ingresado
+    '''
+    return fa.recomendacion_usuario(user_id)
