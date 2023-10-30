@@ -10,9 +10,9 @@ df_best_developer_year = pd.read_parquet("Datasets/best_developer_year")
 df_developer_reviews_analysis = pd.read_parquet("Datasets/developer_reviews_analysis")
 df_user_data = pd.read_parquet("Datasets/user_data")
 df_user_for_genre = pd.read_parquet("Datasets/user_for_genre")
-df_recomendacion_juego = pd.read_parquet(r"Datasets\recomendacion_juego")
-df_recomendacion_usuario = pd.read_parquet(r"Datasets\recomendacion_usuario")
-pivot_norm = pd.read_parquet(r"Datasets\pivot_norm")
+df_recomendacion_juego = pd.read_parquet("Datasets/recomendacion_juego")
+df_recomendacion_usuario = pd.read_parquet("Datasets/recomendacion_usuario")
+pivot_norm = pd.read_parquet("Datasets/pivot_norm")
 
 def presentation():
 
