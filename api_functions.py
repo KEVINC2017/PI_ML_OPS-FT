@@ -133,7 +133,7 @@ def recomendacion_juego(item_id):
 
     recomends = [{'Recomendacion 1': r_1}, {'Recomendacion 2': r_2}, {'Recomendacion 3': r_3}, {'Recomendacion 4': r_4}, {'Recomendacion 5': r_5}]
 
-    return {'Juegos similares a ' + str(item_id): recomends}
+    return {'Juegos similares a ' + item_id: recomends}
 
 def recomendacion_usuario(user_id):
 
