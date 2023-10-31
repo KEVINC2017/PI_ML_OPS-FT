@@ -121,8 +121,8 @@ def recomendacion_juego(item_id):
     # Filtra el df para obtener las filas segun el desarrollador
     recomendacion_item = df_recomendacion_juego[df_recomendacion_juego['item_id'] == item_id]
 
-    if recomendacion_item.empty:
-        return None
+    #if recomendacion_item.empty:
+    #    return None
 
     # Se extrae los nombres de los desarrolladores en el top 3 para ese año
     r_1 = recomendacion_item['Recommend_1'].values[0]
@@ -134,7 +134,7 @@ def recomendacion_juego(item_id):
     recomends = [{'Recomendacion 1': r_1}, {'Recomendacion 2': r_2}, {'Recomendacion 3': r_3}, {'Recomendacion 4': r_4}, {'Recomendacion 5': r_5}]
 
     return {'Juegos similares a ' + item_id: recomends}
-
+'''
 def recomendacion_usuario(user_id):
 
     # Se comprueba si existe el usuario
@@ -165,4 +165,4 @@ def recomendacion_usuario(user_id):
     
     # Devuelve los 5 juegos más recomendados
     return {'Juegos que le pueden interesar a ' + str(user_id): sorted_list[:5]}
-
+'''
