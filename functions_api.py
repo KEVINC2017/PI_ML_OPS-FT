@@ -136,7 +136,7 @@ def recomendacion_juego(item_id):
 
     return {'Juegos similares': recomends}
 
-def recomendacion_usuario(user_id):
+def recomendacion_Usuario(user_id):
 
     # Se comprueba si existe el usuario
     if user_id not in pivot_norm.columns:

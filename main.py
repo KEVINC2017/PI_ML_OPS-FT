@@ -1,6 +1,6 @@
 # Importaciones
 from fastapi import FastAPI, Query
-import api_functions as fa
+import functions_api as fa
 
 # Se instancia la aplicacion
 app = FastAPI()
@@ -75,10 +75,11 @@ async def recomendacion_juego(item_id: int = Query (...,
     return fa.recomendacion_juego(item_id)
 
 #7 recomendacion_usuario
-@app.get(path= "/recomendacion_usuario")
-async def recomendacion_usuario(user_id: str = Query (...,
+@app.get(path="/recomendacion_Usuario")
+async def recomendacion_Usuario(user_id: str = Query (...,
                                             description='Identificador único del usuario',
                                             example='-2SV-vuLB-Kg')):
-        '''Muestra una lista con 5 juegos recomendados para el usuario ingresado
-        '''
-    return fa.recomendacion_usuario(user_id)
+    '''Muestra una lista con 5 juegos recomendados según otros usuarios
+    '''
+    return fa.recomendacion_Usuario(user_id)
+
