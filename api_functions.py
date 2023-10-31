@@ -34,7 +34,7 @@ def presentation():
                     <li><code><strong style="color: #ff5733">/userdata/</strong> (user_id: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra la cantidad de dinero gastado por el usuario, el porcentaje de recomendación y la cantidad de items.</li>
                     <li><code><strong style="color: #ff5733">/UserForGenre/</strong> (genre: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra el usuario que acumula más horas jugadas para el género dado una lista de la acumulación de horas jugadas por año de lanzamiento.</li>
                     <li><code><strong style="color: #ff5733">/best_developer_year/</strong> (year: int)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra el top 3 de desarrolladores con juegos más recomendados por usuarios para el año dado.</li>
-                    <li><code><strong style="color: #ff5733">/recomendacion_juego/</strong> (developer: str)</code>:<br>&nbsp;&nbsp;&nbsp;Ingresando el id de producto, recibe una lista con 5 juegos recomendados similares al ingresado.</li>
+                    <li><code><strong style="color: #ff5733">/recomendacion_juego/</strong> (item_id: str)</code>:<br>&nbsp;&nbsp;&nbsp;Ingresando el id de producto, recibe una lista con 5 juegos recomendados similares al ingresado.</li>
                     <li><code><strong style="color: #ff5733">/recomendacion_usuario/</strong> (usuario_id: str)</code>:<br>&nbsp;&nbsp;&nbsp;Ingresando el id de un usuario, recibe una lista con 5 juegos recomendados para dicho usuario(NOTA: POR EL RAM LIMITADO NO SE LLEGO A REALIZAR EL DEPLOY).</li>
                 </ol>
             </body>
