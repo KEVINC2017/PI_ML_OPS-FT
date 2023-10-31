@@ -73,13 +73,13 @@ async def recomendacion_juego(item_id: int = Query (...,
     '''Muestra una lista con 5 juegos recomendados similares al ingresado
     '''
     return fa.recomendacion_juego(item_id)
-
+'''
 #7 recomendacion_usuario
 @app.get(path="/recomendacion_Usuario")
 async def recomendacion_Usuario(user_id: str = Query (...,
                                             description='Identificador único del usuario',
                                             example='-2SV-vuLB-Kg')):
-    '''Muestra una lista con 5 juegos recomendados según otros usuarios
-    '''
+    #Muestra una lista con 5 juegos recomendados según otros usuarios
+    
     return fa.recomendacion_Usuario(user_id)
-
+'''

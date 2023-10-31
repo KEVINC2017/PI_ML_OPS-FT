@@ -11,8 +11,8 @@ df_developer_reviews_analysis = pd.read_parquet("Datasets/developer_reviews_anal
 df_user_data = pd.read_parquet("Datasets/user_data")
 df_user_for_genre = pd.read_parquet("Datasets/user_for_genre")
 df_recomendacion_juego = pd.read_parquet("Datasets/recomendacion_juego")
-df_recomendacion_usuario = pd.read_parquet("Datasets/recomendacion_usuario")
-pivot_norm = pd.read_parquet("Datasets/pivot_norm")
+#df_recomendacion_usuario = pd.read_parquet("Datasets/recomendacion_usuario")
+#pivot_norm = pd.read_parquet("Datasets/pivot_norm")
 
 def presentation():
 
@@ -136,6 +136,7 @@ def recomendacion_juego(item_id):
 
     return {'Juegos similares': recomends}
 
+'''
 def recomendacion_Usuario(user_id):
 
     # Se comprueba si existe el usuario
@@ -166,4 +167,4 @@ def recomendacion_Usuario(user_id):
     
     # Devuelve los 5 juegos más recomendados
     return {'Juegos que le pueden interesar a ' + str(user_id): sorted_list[:5]}
-
+'''
