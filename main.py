@@ -67,7 +67,7 @@ async def developer_reviews_analysis(developer: str = Query (...,
 
 #6 recomendacion_juego
 @app.get(path= "/recomendacion_juego")
-async def recomendacion_juego(item_id: str = Query (...,
+async def recomendacion_juego(item_id: int = Query (...,
                                             description='Identificador único de juego',
                                             example='50')):
     '''Muestra una lista con 5 juegos recomendados similares al ingresado

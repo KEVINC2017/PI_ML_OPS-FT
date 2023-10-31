@@ -34,7 +34,8 @@ def presentation():
                     <li><code><strong style="color: #ff5733">/userdata/</strong> (user_id: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra la cantidad de dinero gastado por el usuario, el porcentaje de recomendación y la cantidad de items.</li>
                     <li><code><strong style="color: #ff5733">/UserForGenre/</strong> (genre: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra el usuario que acumula más horas jugadas para el género dado una lista de la acumulación de horas jugadas por año de lanzamiento.</li>
                     <li><code><strong style="color: #ff5733">/best_developer_year/</strong> (year: int)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra el top 3 de desarrolladores con juegos más recomendados por usuarios para el año dado.</li>
-                    <li><code><strong style="color: #ff5733">/developer_reviews_analysis/</strong> (developer: str)</code>:<br>&nbsp;&nbsp;&nbsp;Muestra un diccionario con el nombre del desarrollador y una lista con la cantidad total de registros de reviews categorizadas por un análisis de sentimiento.</li>
+                    <li><code><strong style="color: #ff5733">/recomendacion_juego/</strong> (developer: str)</code>:<br>&nbsp;&nbsp;&nbsp;Ingresando el id de producto, recibe una lista con 5 juegos recomendados similares al ingresado.</li>
+                    <li><code><strong style="color: #ff5733">/recomendacion_usuario/</strong> (usuario_id: str)</code>:<br>&nbsp;&nbsp;&nbsp;Ingresando el id de un usuario, recibe una lista con 5 juegos recomendados para dicho usuario(NOTA: POR EL RAM LIMITADO NO SE LLEGO A REALIZAR EL DEPLOY).</li>
                 </ol>
             </body>
             </html>
@@ -121,8 +122,8 @@ def recomendacion_juego(item_id):
     # Filtra el df para obtener las filas segun el desarrollador
     recomendacion_item = df_recomendacion_juego[df_recomendacion_juego['item_id'] == item_id]
 
-    #if recomendacion_item.empty:
-    #    return None
+    if recomendacion_item.empty:
+        return None
 
     # Se extrae los nombres de los desarrolladores en el top 3 para ese año
     r_1 = recomendacion_item['Recommend_1'].values[0]
@@ -133,7 +134,7 @@ def recomendacion_juego(item_id):
 
     recomends = [{'Recomendacion 1': r_1}, {'Recomendacion 2': r_2}, {'Recomendacion 3': r_3}, {'Recomendacion 4': r_4}, {'Recomendacion 5': r_5}]
 
-    return {'Juegos similares a ' + item_id: recomends}
+    return {'Juegos similares': recomends}
 '''
 def recomendacion_usuario(user_id):
 
