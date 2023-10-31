@@ -64,3 +64,9 @@ Respecto al modelo "user-item" no se pudo realizar el deploy correspondiente, es
 ### 5. Deploy:
 
 La API se ha implementado en la plataforma Render, lo que brinda a los usuarios la capacidad de interactuar con ella. Esto les permite realizar consultas y solicitar recomendaciones de videojuegos de manera conveniente y eficiente.
+
+## Links
+
+Video: https://youtu.be/0_7buKJccAg
+
+Deploy: https://pi-ml-ops-ctad.onrender.com/docs
